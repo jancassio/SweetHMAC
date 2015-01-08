@@ -1,4 +1,3 @@
 language: objective-c
 
-xcode_project: SweetHMAC.xcodeproj
-xcode_scheme: SweetHMAC
+script: xctool -project SweetHMAC.xcodeproj -scheme SweetHMAC build test
