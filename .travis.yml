@@ -1,0 +1,4 @@
+language: objective-c
+
+xcode_project: SweetHMAC.xcodeproj
+xcode_scheme: SweetHMAC
