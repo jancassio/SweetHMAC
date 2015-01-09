@@ -4,7 +4,6 @@
 A special thanks to [jernejstrasner](https://gist.github.com/jernejstrasner) for shared [HMACDigest Gist](https://gist.github.com/jernejstrasner/1d5fa5e2fabda2e729d1), that inspired to create this simple class and String extension.
 
 ## Usage examples
----
 
 There are two ways to use Sweet HMAC in your projects
 
@@ -30,14 +29,11 @@ There are two ways to use Sweet HMAC in your projects
 
 
 ## Considerations
----
+
 * I'm not tested this class in Mac and I don't see any reason to SweetHMAC not work in Mac OS X projects, feel free to fork this project an run tests over Mac OS X platform.
 
 
 ## License
----
-
-###The MIT License (MIT)
 
 Copyright (c) 2014 Jan Cassio. All rights reserved.
 
