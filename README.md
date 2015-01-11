@@ -8,24 +8,26 @@ A special thanks to [jernejstrasner](https://gist.github.com/jernejstrasner) for
 There are two ways to use Sweet HMAC in your projects
 
 ### 1. by String extension
-
-	// Will output this string: e470f785afb708cd8c2a31860642fd11
-	"I'm going to make him an offer he can't refuse".HMAC(.MD5, secret:"Vito Corleone")
+```swift
+// Will output this string: e470f785afb708cd8c2a31860642fd11
+"I'm going to make him an offer he can't refuse".HMAC(.MD5, secret:"Vito Corleone")
+```
 	
 ### 2. by SweetHMAC class
 
-	let quote = "I'm going to make him an offer he can't refuse"
-	let author = "Vito Corleone"
+```swift
+let quote = "I'm going to make him an offer he can't refuse"
+let author = "Vito Corleone"
 
-	// Create a SweetHMAC instance with your message and secret strings
-	let hmacEncrypt:SweetHMAC = SweetHMAC(source: quote, secret: author)
-	
-	// Pick some computed HMAC output based on some algorithm using "HMAC" method...
-	let md5 = hmacEncrypt.HMAC(.MD5)
-	
-	// ...or do it more "Sweet" like this
-	let md5 = SweetHMAC(source: quote, secret: author).HMAC(.MD5)
-	
+// Create a SweetHMAC instance with your message and secret strings
+let hmacEncrypt:SweetHMAC = SweetHMAC(source: quote, secret: author)
+
+// Pick some computed HMAC output based on some algorithm using "HMAC" method...
+let md5 = hmacEncrypt.HMAC(.MD5)
+
+// ...or do it more "Sweet" like this
+let md5 = SweetHMAC(source: quote, secret: author).HMAC(.MD5)
+```
 
 
 ## Considerations
