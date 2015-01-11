@@ -29,6 +29,14 @@ let md5 = hmacEncrypt.HMAC(.MD5)
 let md5 = SweetHMAC(source: quote, secret: author).HMAC(.MD5)
 ```
 
+## Supported HMAC algorithms
+
+* MD5
+* SHA1
+* SHA224
+* SHA256
+* SHA384
+* SHA512
 
 ## Considerations
 
