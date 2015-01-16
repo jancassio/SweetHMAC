@@ -1,3 +1,17 @@
 language: objective-c
-
-script: xctool -project SweetHMAC.xcodeproj -scheme SweetHMAC build test
+before_script:
+- "./scripts/add-key.sh"
+- "./scripts/update-bundle.sh"
+script:
+- xctool -project SweetHMAC.xcodeproj -scheme SweetHMAC -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool test -project SweetHMAC.xcodeproj -scheme SweetHMAC -sdk iphonesimulator
+  ONLY_ACTIVE_ARCH=NO
+after_script:
+- "./scripts/remove-key.sh"
+env:
+  global:
+  - APP_NAME="SweetHMAC"
+  - 'DEVELOPER_NAME="iPhone Distribution: Janio Cassio Leite (D9P69ND6CZ)"'
+  - PROFILE_NAME="provisioning"
+  - secure: ODjL8XbxRzNZF04Ho5UbDsRDBW27nxtgvhkBm+9TBqu0melkw+AWBmr06SW2yarSt1EnDjKEi8VjCE44QgckD0lM+ylaXuEisJJ/6aefSbxJa/ckInPVqxDLJssaqkTidrXptFihMljaABMdlOcPAOZrtEJ2croN9WPG3c/baIw=
+  - secure: hoBPpIJ9w+/Ly/feND0di5NrGl0JPvgsYq7ldBuGX/DaD50fxqvBwuCLtWud9u1lZnA85n1nEl6DA2baMUEDSS6iiNEZIUcmadu1JDqnWyWG23Ei6ZFeie/tPas21EqYj2qlNk55ZvLf2/9BobRa7xmtLTDbe/wNNNbiRkV5GN0=
