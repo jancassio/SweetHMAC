@@ -5,14 +5,14 @@ before_script:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
 - ./scripts/add-key.sh
-- ./scripts/update-bundle.sh
 
 script:
 - xctool -project SweetHMAC.xcodeproj -scheme SweetHMAC -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-- xctool test -project SweetHMAC.xcodeproj -scheme SweetHMAC -sdk iphonesimulator
-  ONLY_ACTIVE_ARCH=NO
+- xctool test -project SweetHMAC.xcodeproj -scheme SweetHMAC -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+
 after_script:
 - "./scripts/remove-key.sh"
+
 env:
   global:
   - APP_NAME="SweetHMAC"
