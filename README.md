@@ -1,5 +1,9 @@
 #Sweet HMAC
 
+[![Twitter: @jancassio](https://img.shields.io/badge/contact-@jancassio-blue.svg?style=flat)](https://twitter.com/jancassio)
+[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/jancassio/SweetHMAC/blob/master/LICENSE)
+[![Build](https://api.travis-ci.org/jancassio/SweetHMAC.svg)](https://travis-ci.org/jancassio/SweetHMAC)
+
 `SweetHMAC` is a tiny and easy to use Swift class to encrypt strings using HMAC algorithms.
 A special thanks to [jernejstrasner](https://gist.github.com/jernejstrasner) for shared [HMACDigest Gist](https://gist.github.com/jernejstrasner/1d5fa5e2fabda2e729d1), that inspired to create this simple class and String extension.
 
