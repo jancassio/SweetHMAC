@@ -1,7 +1,12 @@
 language: objective-c
+
 before_script:
-- "./scripts/add-key.sh"
-- "./scripts/update-bundle.sh"
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/provisioning.mobileprovision.enc -d -a -out scripts/profile/provisioning.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+- ./scripts/add-key.sh
+- ./scripts/update-bundle.sh
+
 script:
 - xctool -project SweetHMAC.xcodeproj -scheme SweetHMAC -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - xctool test -project SweetHMAC.xcodeproj -scheme SweetHMAC -sdk iphonesimulator
