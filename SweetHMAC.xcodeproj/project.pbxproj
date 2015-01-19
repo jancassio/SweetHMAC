@@ -431,6 +431,7 @@
 				D26963331A5D68E300603A31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D26963341A5D68E300603A31 /* Build configuration list for PBXNativeTarget "SweetHMACTests" */ = {
 			isa = XCConfigurationList;
@@ -439,6 +440,7 @@
 				D26963361A5D68E300603A31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
