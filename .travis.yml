@@ -1,4 +1,8 @@
 language: objective-c
+osx_image: xcode611
+branches:
+  only:
+    - master
 
 before_script:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/provisioning.mobileprovision.enc -d -a -out scripts/profile/provisioning.mobileprovision
@@ -7,8 +11,12 @@ before_script:
 - ./scripts/add-key.sh
 
 script:
-- xctool -project SweetHMAC.xcodeproj -scheme SweetHMAC -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-- xctool test -project SweetHMAC.xcodeproj -scheme SweetHMAC -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "CommonCrypto iOS" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "CommonCrypto OSX" -sdk macosx ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC iOS" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC OSX" -sdk macosx ONLY_ACTIVE_ARCH=NO
+- xctool test -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC OSX" -sdk macosx ONLY_ACTIVE_ARCH=NO
+- xctool test -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC iOS" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 
 after_script:
 - "./scripts/remove-key.sh"
