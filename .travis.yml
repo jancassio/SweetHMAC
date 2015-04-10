@@ -11,12 +11,12 @@ before_script:
 - ./scripts/add-key.sh
 
 script:
-- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "CommonCrypto iOS" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "CommonCrypto OSX" -sdk macosx ONLY_ACTIVE_ARCH=NO
-- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC iOS" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC OSX" -sdk macosx ONLY_ACTIVE_ARCH=NO
-- xctool test -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC OSX" -sdk macosx ONLY_ACTIVE_ARCH=NO
-- xctool test -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC iOS" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "CommonCrypto" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "CommonCrypto" -sdk macosx ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC" -sdk macosx ONLY_ACTIVE_ARCH=NO
+- xctool test -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC OSX Tests" -sdk macosx ONLY_ACTIVE_ARCH=NO
+- xctool test -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC iOS Tests" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 
 after_script:
 - "./scripts/remove-key.sh"

@@ -22,5 +22,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-MODULEMAP_FILE[sdk=iphoneos*] = $(SRCROOT)/Modules/iphoneos.modulemap
-MODULEMAP_FILE[sdk=iphonesimulator*] = $(SRCROOT)/Modules/iphonesimulator.modulemap
+#include "../Configuration/SweetHMAC.xcconfig"
+
+MODULEMAP_FILE[sdk=iphoneos*]        = $(SRCROOT)/CommonCrypto/iphoneos.modulemap
+MODULEMAP_FILE[sdk=iphonesimulator*] = $(SRCROOT)/CommonCrypto/iphonesimulator.modulemap
+MODULEMAP_FILE[sdk=macosx*]          = $(SRCROOT)/CommonCrypto/macosx.modulemap

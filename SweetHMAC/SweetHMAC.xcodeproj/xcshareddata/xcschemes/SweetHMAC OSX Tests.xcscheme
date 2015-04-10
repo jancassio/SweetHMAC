@@ -9,28 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D262A36B1ACF7787006886A8"
-               BuildableName = "CommonCrypto.framework"
-               BlueprintName = "CommonCrypto iOS"
-               ReferencedContainer = "container:SweetHMAC.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D262A3751ACF7788006886A8"
-               BuildableName = "CommonCryptoTests.xctest"
-               BlueprintName = "CommonCryptoTests"
+               BlueprintIdentifier = "D222ABC01AD74B1000276E42"
+               BuildableName = "SweetHMAC OSX Tests.xctest"
+               BlueprintName = "SweetHMAC OSX Tests"
                ReferencedContainer = "container:SweetHMAC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D262A3751ACF7788006886A8"
-               BuildableName = "CommonCryptoTests.xctest"
-               BlueprintName = "CommonCryptoTests"
+               BlueprintIdentifier = "D222ABC01AD74B1000276E42"
+               BuildableName = "SweetHMAC OSX Tests.xctest"
+               BlueprintName = "SweetHMAC OSX Tests"
                ReferencedContainer = "container:SweetHMAC.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D262A36B1ACF7787006886A8"
-            BuildableName = "CommonCrypto.framework"
-            BlueprintName = "CommonCrypto iOS"
+            BlueprintIdentifier = "D222ABC01AD74B1000276E42"
+            BuildableName = "SweetHMAC OSX Tests.xctest"
+            BlueprintName = "SweetHMAC OSX Tests"
             ReferencedContainer = "container:SweetHMAC.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,9 +61,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D262A36B1ACF7787006886A8"
-            BuildableName = "CommonCrypto.framework"
-            BlueprintName = "CommonCrypto iOS"
+            BlueprintIdentifier = "D222ABC01AD74B1000276E42"
+            BuildableName = "SweetHMAC OSX Tests.xctest"
+            BlueprintName = "SweetHMAC OSX Tests"
             ReferencedContainer = "container:SweetHMAC.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -93,9 +79,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D262A36B1ACF7787006886A8"
-            BuildableName = "CommonCrypto.framework"
-            BlueprintName = "CommonCrypto iOS"
+            BlueprintIdentifier = "D222ABC01AD74B1000276E42"
+            BuildableName = "SweetHMAC OSX Tests.xctest"
+            BlueprintName = "SweetHMAC OSX Tests"
             ReferencedContainer = "container:SweetHMAC.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

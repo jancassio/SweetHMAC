@@ -1,8 +1,8 @@
 //
-//  Default-Conf.xcconfig
+//  SweetHMAC.xcconfig
 //  SweetHMAC
 //
-//  Copyright (c) 2014 Jan Cassio. All rights reserved.
+//  Copyright (c) 2015 Jan Cassio. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,4 +22,30 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-SWIFT_INCLUDE_PATHS = Modules
+SWIFT_WHOLE_MODULE_OPTIMIZATION      = YES
+
+// Universal Framework
+
+SUPPORTED_PLATFORMS                  = iphoneos iphonesimulator macosx
+
+ARCHS[sdk=iphone*] = arm64 armv7 armv7s
+ARCHS[sdk=macosx*] = x86_64
+
+VALID_ARCHS[sdk=iphone*]             = arm64 armv7 armv7s
+VALID_ARCHS[sdk=macosx*]             = x86_64
+
+LD_RUNPATH_SEARCH_PATHS[sdk=iphone*] = $(inherited) @executable_path/Frameworks
+LD_RUNPATH_SEARCH_PATHS[sdk=macosx*] = $(inherited) @executable_path/Frameworks
+
+FRAMEWORK_SEARCH_PATHS[sdk=iphone*]  = $(SDK_DIR)/Developer/Library/Frameworks
+FRAMEWORK_SEARCH_PATHS[sdk=macosx*]  = $(SDK_DIR)/System/Library/Frameworks
+
+// Platform-specific
+
+// iOS
+CODE_SIGN_IDENTITY[sdk=iphoneos*]    = iPhone Developer
+TARGETED_DEVICE_FAMILY[sdk=iphone*]  = 1,2
+
+// OS X
+FRAMEWORK_VERSION[sdk=macosx*]       = A
+COMBINE_HIDPI_IMAGES[sdk=macosx*]    = YES
