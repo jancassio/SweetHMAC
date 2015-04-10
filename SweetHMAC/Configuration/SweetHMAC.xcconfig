@@ -32,7 +32,7 @@ ARCHS[sdk=iphone*] = arm64 armv7 armv7s
 ARCHS[sdk=macosx*] = x86_64
 
 VALID_ARCHS[sdk=iphone*]             = arm64 armv7 armv7s
-VALID_ARCHS[sdk=macosx*]             = x86_64
+VALID_ARCHS[sdk=macosx*]             = i386 x86_64
 
 LD_RUNPATH_SEARCH_PATHS[sdk=iphone*] = $(inherited) @executable_path/Frameworks
 LD_RUNPATH_SEARCH_PATHS[sdk=macosx*] = $(inherited) @executable_path/Frameworks
