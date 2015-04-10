@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sweet HMAC by jancassio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Sweet HMAC</h1>
+      <h2 class="project-tagline">A tiny and easy to use Swift class to encrypt strings using HMAC algorithms.</h2>
+      <a href="https://github.com/jancassio/SweetHMAC" class="btn">View on GitHub</a>
+      <a href="https://github.com/jancassio/SweetHMAC/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/jancassio/SweetHMAC/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="sweet-hmac" class="anchor" href="#sweet-hmac" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sweet HMAC</h1>
+
+<p><code>SweetHMAC</code> is a tiny and easy to use Swift class to encrypt strings using HMAC algorithms.
+A special thanks to <a href="https://gist.github.com/jernejstrasner">jernejstrasner</a> for shared <a href="https://gist.github.com/jernejstrasner/1d5fa5e2fabda2e729d1">HMACDigest Gist</a>, that inspired to create this simple class and String extension.</p>
+
+<h2>
+<a id="usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage examples</h2>
+
+<p>There are two ways to use Sweet HMAC in your projects</p>
+
+<h3>
+<a id="1-by-string-extension" class="anchor" href="#1-by-string-extension" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. by String extension</h3>
+
+<div class="highlight highlight-swift"><pre><span class="pl-c">// Will output this string: e470f785afb708cd8c2a31860642fd11</span>
+<span class="pl-s"><span class="pl-pds">"</span>I'm going to make him an offer he can't refuse<span class="pl-pds">"</span></span><span class="pl-k">.</span>HMAC(<span class="pl-k">.</span>MD5, secret:<span class="pl-s"><span class="pl-pds">"</span>Vito Corleone<span class="pl-pds">"</span></span>)</pre></div>
+
+<h3>
+<a id="2-by-sweethmac-class" class="anchor" href="#2-by-sweethmac-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. by SweetHMAC class</h3>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">let</span> quote <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>I'm going to make him an offer he can't refuse<span class="pl-pds">"</span></span>
+<span class="pl-k">let</span> author <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>Vito Corleone<span class="pl-pds">"</span></span>
+
+<span class="pl-c">// Create a SweetHMAC instance with your message and secret strings</span>
+<span class="pl-k">let</span> digest:SweetHMAC <span class="pl-k">=</span> SweetHMAC(source: quote, secret: author)
+
+<span class="pl-c">// Pick some computed HMAC output based on some algorithm using "HMAC" method...</span>
+<span class="pl-k">let</span> md5 <span class="pl-k">=</span> digest<span class="pl-k">.</span>HMAC(<span class="pl-k">.</span>MD5)
+
+<span class="pl-c">// ...or do it more "Sweet" like this</span>
+<span class="pl-k">let</span> md5 <span class="pl-k">=</span> SweetHMAC(source: quote, secret: author)<span class="pl-k">.</span>HMAC(<span class="pl-k">.</span>MD5)</pre></div>
+
+<h2>
+<a id="supported-hmac-algorithms" class="anchor" href="#supported-hmac-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supported HMAC algorithms</h2>
+
+<ul>
+<li>MD5</li>
+<li>SHA1</li>
+<li>SHA224</li>
+<li>SHA256</li>
+<li>SHA384</li>
+<li>SHA512</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>SweetHMAC have many clear and simple options to be used in any iOS or OSX projects.</p>
+
+<h2>
+<a id="using-dependency-manager" class="anchor" href="#using-dependency-manager" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using dependency manager</h2>
+
+<p>Actually SweetHMAC can be used with those dependency managers</p>
+
+<ul>
+<li>CocoaPods</li>
+<li>Carthage</li>
+</ul>
+
+<h3>
+<a id="cocoapods" class="anchor" href="#cocoapods" aria-hidden="true"><span class="octicon octicon-link"></span></a>CocoaPods</h3>
+
+<p>You can use SweetHMAC with CocoaPods, specify your <code>Podfile</code> like this:</p>
+
+<div class="highlight highlight-ruby"><pre>source <span class="pl-s"><span class="pl-pds">'</span>https://github.com/CocoaPods/Specs.git<span class="pl-pds">'</span></span>
+platform <span class="pl-c1">:ios</span>, <span class="pl-s"><span class="pl-pds">'</span>8.0<span class="pl-pds">'</span></span>
+use_frameworks!
+
+pod <span class="pl-s"><span class="pl-pds">'</span>SweetHMAC<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>~&gt; 1.1<span class="pl-pds">'</span></span></pre></div>
+
+<h2>
+<a id="carthage" class="anchor" href="#carthage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Carthage</h2>
+
+<p>Also you can use Carthage to SweetHMAC framework at your project, just add SweetHMac in your <code>Cartfile</code> file like this:</p>
+
+<p><code>github "jancassio/SweetHMAC" &gt;= 1.1</code></p>
+
+<h2>
+<a id="integrated-project" class="anchor" href="#integrated-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Integrated Project</h2>
+
+<p>As many iOS/OSX projects, you can add third party libraries in your project as well.</p>
+
+<h3>
+<a id="embeded-framework" class="anchor" href="#embeded-framework" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embeded Framework</h3>
+
+<p>You can add SweetHMAC as submodule (preferred) or paste entire SweetHMAC project relative to your Xcode project, choose one of both options and after them:</p>
+
+<ol>
+<li>Drag <code>SweetHMAC.xcodeproj</code> from SweetHMAC folder to your project.</li>
+<li>At Xcode, open <em>"Project Navigator"</em> (⌘+1).</li>
+<li>Select SweetHMAC project (the blue project icon).</li>
+<li>Check if SweetHMAC deployment target matches your project deployment target.</li>
+<li>At this point, select <em>"Build Phases"</em> tab.</li>
+<li>Click on <strong>+</strong> icon to add a new <em>"Copy Phase"</em>. Optional: Rename this phase to <em>"Embeded Frameworks"</em>.</li>
+<li>Set destination to <em>"Frameworks"</em>.</li>
+<li>Add <code>SweetHMAC.framework</code>.</li>
+</ol>
+
+<h3>
+<a id="source-file" class="anchor" href="#source-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source file</h3>
+
+<p>This is not the preferred option to add SweetHMAC in your project, because SweetHMAC depends by CommonCrypto lib to work properly and, Swift can't access this lib directly.</p>
+
+<p>So if you still want to use SweetHMAC by source files, follow steps below:</p>
+
+<ol>
+<li>At Xcode, open <em>"Project Navigator"</em> (⌘+1).</li>
+<li>Select your project file (the blue project icon).</li>
+<li>Click on <em>"Build Phases"</em> tab.</li>
+<li>Create a new <em>"Run Script"</em> phase clicking on <strong>+</strong> icon.</li>
+<li>Drag the run script phase created to stay below the first phase (ak <em>"Target dependencies"</em>).</li>
+<li>
+<p>Paste the code below at run script phase created before:</p>
+
+<div class="highlight highlight-shell"><pre>COMMOM_CRYPTO_PATH=<span class="pl-smi">$SDKROOT</span>/usr/include/CommonCrypto/CommonCrypto.h
+COMMOM_CRYPTO_R_PATH=<span class="pl-smi">$SDKROOT</span>/usr/include/CommonCrypto/CommonRandom.h
+
+MODULE_DIR=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$SRCROOT</span>/Modules/CommonCrypto<span class="pl-pds">"</span></span>
+MODULE_FILE=<span class="pl-smi">$MODULE_DIR</span>/module.map
+MODULE_TEMPLATE=<span class="pl-s"><span class="pl-pds">"</span>module CommonCrypto [system] {\n\t</span>
+<span class="pl-s">  header <span class="pl-cce">\"</span><span class="pl-smi">$COMMOM_CRYPTO_PATH</span><span class="pl-cce">\"</span>\n\t</span>
+<span class="pl-s">  header <span class="pl-cce">\"</span><span class="pl-smi">$COMMOM_CRYPTO_R_PATH</span><span class="pl-cce">\"</span>\n\t</span>
+<span class="pl-s">  export *\n</span>
+<span class="pl-s">}<span class="pl-pds">"</span></span>
+
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Create Modules path to map CommonCrypto lib<span class="pl-pds">"</span></span>
+mkdir -p <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$SRCROOT</span>/Modules/CommonCrypto<span class="pl-pds">"</span></span>
+
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Cleanup previous CommonCrypto script to make sure the deployment target is always updated<span class="pl-pds">"</span></span>
+
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> <span class="pl-smi">$MODULE_FILE</span>
+
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Create CommonCrypto module map template<span class="pl-pds">"</span></span>
+<span class="pl-c1">echo</span> -e <span class="pl-smi">$MODULE_TEMPLATE</span> <span class="pl-k">&gt;</span> <span class="pl-smi">$MODULE_FILE</span></pre></div>
+</li>
+<li><p>Create a new file (⌘+N).</p></li>
+<li>Select <em>"iOS"</em>/<em>"Others"</em>.</li>
+<li>Select <em>"Congfiguration Settings File"</em>.</li>
+<li>Put any name you want.</li>
+<li>Add the content below in Configuration file created before:
+<code>
+SWIFT_INCLUDE_PATHS="$SRCROOT/Modules"
+</code>
+</li>
+<li>Go to your project file in <em>"Project Navigator"</em> (⌘+1)</li>
+<li>Select your project file and select your project above your project targets.</li>
+<li>Change configurations for the last one you created for each target you are using SweetHMAC by source.</li>
+<li>Build your project.</li>
+</ol>
+
+<h3>
+<a id="quick-observation" class="anchor" href="#quick-observation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick Observation</h3>
+
+<p>Each time you change your deployment device for example, from Simulator to Device, you should build your project, because the script added in build phase, will use the current operational system selected in your Xcode scheme to construct the absolute path to the CommonCrypto header relative of Simulator SDK or iPhoneOS SDK.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2014 Jan Cassio. All rights reserved.</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jancassio/SweetHMAC">Sweet HMAC</a> is maintained by <a href="https://github.com/jancassio">jancassio</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-95677-16");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
+
