@@ -12,6 +12,8 @@ Pod::Spec.new do |spec|
   spec.osx.deployment_target = '10.10'
 
   spec.source_files = "SweetHMAC/Source"
+  spec.framework    = "SystemConfiguration"
+  spec.module_name  = "CommonCrypto"
 
   spec.requires_arc = true
 

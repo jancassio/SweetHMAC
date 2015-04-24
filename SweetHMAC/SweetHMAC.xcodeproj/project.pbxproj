@@ -316,7 +316,7 @@
 		D25049BD1AC904B4007F9B92 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Jan Cássio";
 				TargetAttributes = {
 					D222ABC01AD74B1000276E42 = {
@@ -426,7 +426,6 @@
 		D222ABCB1AD74B1000276E42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -447,7 +446,6 @@
 		D222ABCC1AD74B1000276E42 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -695,6 +693,7 @@
 				D222ABCC1AD74B1000276E42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D222ABDB1AD74B8A00276E42 /* Build configuration list for PBXNativeTarget "SweetHMAC iOS Tests" */ = {
 			isa = XCConfigurationList;
@@ -703,6 +702,7 @@
 				D222ABDD1AD74B8A00276E42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D25049C01AC904B4007F9B92 /* Build configuration list for PBXProject "SweetHMAC" */ = {
 			isa = XCConfigurationList;
