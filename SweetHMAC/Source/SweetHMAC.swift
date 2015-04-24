@@ -127,11 +127,11 @@ public class SweetHMAC {
   struct UTF8EncodedString {
     
     var data:[CChar]
-    var length:UInt
+    var length:Int
     
     init(string:String) {
       data = string.cStringUsingEncoding(NSUTF8StringEncoding)!
-      length = UInt( string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) )
+      length = string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
     }
   }
   
