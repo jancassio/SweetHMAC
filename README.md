@@ -9,6 +9,41 @@
 `SweetHMAC` is a tiny and easy to use Swift class to encrypt strings using HMAC algorithms.
 A special thanks to [jernejstrasner](https://gist.github.com/jernejstrasner) for shared [HMACDigest Gist](https://gist.github.com/jernejstrasner/1d5fa5e2fabda2e729d1), that inspired to create this simple class and String extension.
 
+## Usage examples
+
+There are two ways to use Sweet HMAC in your projects
+
+### 1. by String extension
+```swift
+// Will output this string: e470f785afb708cd8c2a31860642fd11
+"I'm going to make him an offer he can't refuse".HMAC(.MD5, secret:"Vito Corleone")
+```
+
+### 2. by SweetHMAC class
+
+```swift
+let quote = "I'm going to make him an offer he can't refuse"
+let author = "Vito Corleone"
+
+// Create a SweetHMAC instance with your message and secret strings
+let digest:SweetHMAC = SweetHMAC(source: quote, secret: author)
+
+// Pick some computed HMAC output based on some algorithm using "HMAC" method...
+let md5 = digest.HMAC(.MD5)
+
+// ...or do it more "Sweet" like this
+let md5 = SweetHMAC(source: quote, secret: author).HMAC(.MD5)
+```
+
+## Supported HMAC algorithms
+
+* MD5
+* SHA1
+* SHA224
+* SHA256
+* SHA384
+* SHA512
+
 ## Installation
 
 SweetHMAC have many clear and simple options to be used in any iOS or OSX projects.
@@ -104,41 +139,6 @@ So if you still want to use SweetHMAC by source files, follow steps below:
 
 ###Quick Observation
 Each time you change your deployment device for example, from Simulator to Device, you should build your project, because the script added in build phase, will use the current operational system selected in your Xcode scheme to construct the absolute path to the CommonCrypto header relative of Simulator SDK or iPhoneOS SDK.
-
-## Usage examples
-
-There are two ways to use Sweet HMAC in your projects
-
-### 1. by String extension
-```swift
-// Will output this string: e470f785afb708cd8c2a31860642fd11
-"I'm going to make him an offer he can't refuse".HMAC(.MD5, secret:"Vito Corleone")
-```
-
-### 2. by SweetHMAC class
-
-```swift
-let quote = "I'm going to make him an offer he can't refuse"
-let author = "Vito Corleone"
-
-// Create a SweetHMAC instance with your message and secret strings
-let digest:SweetHMAC = SweetHMAC(source: quote, secret: author)
-
-// Pick some computed HMAC output based on some algorithm using "HMAC" method...
-let md5 = digest.HMAC(.MD5)
-
-// ...or do it more "Sweet" like this
-let md5 = SweetHMAC(source: quote, secret: author).HMAC(.MD5)
-```
-
-## Supported HMAC algorithms
-
-* MD5
-* SHA1
-* SHA224
-* SHA256
-* SHA384
-* SHA512
 
 ## License
 
