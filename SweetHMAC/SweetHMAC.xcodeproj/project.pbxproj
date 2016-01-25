@@ -316,7 +316,9 @@
 		D25049BD1AC904B4007F9B92 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Jan Cássio";
 				TargetAttributes = {
 					D222ABC01AD74B1000276E42 = {
@@ -438,6 +440,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/OSX/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jancassio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -455,6 +458,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/OSX/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jancassio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -473,6 +477,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/OSX/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jancassio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -486,6 +491,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/OSX/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jancassio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -511,6 +517,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -598,6 +605,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jancassio.frameworks.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SweetHMAC;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -628,6 +636,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jancassio.frameworks.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SweetHMAC;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -656,6 +665,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				MODULEMAP_FILE = "$(MODULEMAP_FILE)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jancassio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = CommonCrypto;
 				SKIP_INSTALL = YES;
 			};
@@ -678,6 +688,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				MODULEMAP_FILE = "$(MODULEMAP_FILE)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jancassio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = CommonCrypto;
 				SKIP_INSTALL = YES;
 			};

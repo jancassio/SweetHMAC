@@ -36,7 +36,7 @@ public extension String {
   /**
   Proved a string for some HMAC algorithm and secret string.
   
-  :param: algorithm Some HMAC algorithm. Supported types are:
+  - parameter algorithm: Some HMAC algorithm. Supported types are:
   
   - MD5
   - SHA1
@@ -45,9 +45,9 @@ public extension String {
   - SHA348
   - SHA512
   
-  :param: secret A secret message to authenticate the encrypted message.
+  - parameter secret: A secret message to authenticate the encrypted message.
   
-  :returns: A encryped string based on HMAC algorithm and secret string.
+  - returns: A encryped string based on HMAC algorithm and secret string.
   */
   func HMAC(algorithm:HMACAlgorithm, secret:String) -> String {
     return SweetHMAC(message: self, secret: secret).HMAC(algorithm)
@@ -74,7 +74,7 @@ public enum HMACAlgorithm {
   /**
   Give the native value for HMACAlgorithm value
   
-  :returns: The system `CCHmacAlgorithm` native value.
+  - returns: The system `CCHmacAlgorithm` native value.
   */
   func toNative () -> CCHmacAlgorithm {
     switch self {
@@ -146,8 +146,8 @@ public class SweetHMAC {
   
   /**
   Create a new SweetHMAC instance with given message and secret strings.
-  :param: message The message to be encrypted.
-  :param: secret The secret message to authenticate encrypted message.
+  - parameter message: The message to be encrypted.
+  - parameter secret: The secret message to authenticate encrypted message.
   */
   public init(message:String, secret:String) {
     self.message = message
@@ -156,8 +156,8 @@ public class SweetHMAC {
   
   /**
   Generate HMAC string with given algorithm.
-  :param: algorithm Algorithm to encrypt message.
-  :returns: A encrypted string.
+  - parameter algorithm: Algorithm to encrypt message.
+  - returns: A encrypted string.
   */
   public func HMAC(algorithm:HMACAlgorithm) -> String {
     let seed  = UTF8EncodedString(string: message)
@@ -168,7 +168,7 @@ public class SweetHMAC {
     
     CCHmac(algorithm.toNative(), key.data, key.length, seed.data, seed.length, result)
     
-    var hash = NSMutableString()
+    let hash = NSMutableString()
     
     for i in 0..<digestLength {
       hash.appendFormat("%02x", result[i])
