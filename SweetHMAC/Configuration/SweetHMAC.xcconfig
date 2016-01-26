@@ -37,8 +37,8 @@ VALID_ARCHS[sdk=macosx*]             = i386 x86_64
 LD_RUNPATH_SEARCH_PATHS[sdk=iphone*] = $(inherited) @executable_path/Frameworks
 LD_RUNPATH_SEARCH_PATHS[sdk=macosx*] = $(inherited) @executable_path/Frameworks
 
-FRAMEWORK_SEARCH_PATHS[sdk=iphone*]  = $(SDK_DIR)/Developer/Library/Frameworks
-FRAMEWORK_SEARCH_PATHS[sdk=macosx*]  = $(SDK_DIR)/System/Library/Frameworks
+FRAMEWORK_SEARCH_PATHS[sdk=iphone*]  = $(SDK_DIR)/Developer/Library/PrivateFrameworks
+FRAMEWORK_SEARCH_PATHS[sdk=macosx*]  = $(SDK_DIR)/System/Library/PrivateFrameworks
 
 // Platform-specific
 
