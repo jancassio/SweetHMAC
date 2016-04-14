@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'SweetHMAC'
-  spec.version = '1.1'
+  spec.version = '1.2'
   spec.license = 'MIT'
   spec.summary = 'A tiny and easy to use Swift class to encrypt strings using HMAC algorithms.'
   spec.homepage = 'https://github.com/jancassio/SweetHMAC'
