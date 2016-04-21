@@ -69,7 +69,7 @@ public extension String {
     return SweetHMAC.SHA256(self)
   }
   
-  func SHA348 () -> String {
+  func SHA384 () -> String {
     return SweetHMAC.SHA384(self)
   }
   
