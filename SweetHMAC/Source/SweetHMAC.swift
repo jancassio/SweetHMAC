@@ -29,7 +29,17 @@
  */
 
 import Foundation
-import CommonCrypto
+
+#if os(OSX)
+  import CommonCryptoMacOSX
+#elseif os(iOS)
+  #if (arch(i386) || arch(x86_64))
+    import CommonCryptoiPhoneSimulator
+  #else
+    import CommonCryptoiPhoneOS
+  #endif
+  
+#endif
 
 public extension String {
   
