@@ -2,29 +2,33 @@ language: objective-c
 osx_image: xcode7.2
 branches:
   only:
-    - master
-
+  - master
 before_script:
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/provisioning.mobileprovision.enc -d -a -out scripts/profile/provisioning.mobileprovision
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/provisioning.mobileprovision.enc
+  -d -a -out scripts/profile/provisioning.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a
+  -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a
+  -out scripts/certs/dist.p12
 - ./scripts/add-key.sh
-
 script:
-- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "CommonCrypto" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "CommonCrypto" -sdk macosx ONLY_ACTIVE_ARCH=NO
-- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "CommonCrypto" -sdk iphonesimulator
+  ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "CommonCrypto" -sdk macosx
+  ONLY_ACTIVE_ARCH=NO
+- xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC" -sdk iphonesimulator
+  ONLY_ACTIVE_ARCH=NO
 - xctool -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC" -sdk macosx ONLY_ACTIVE_ARCH=NO
-- xctool test -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC OSX Tests" -sdk macosx ONLY_ACTIVE_ARCH=NO
-- xctool test -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC iOS Tests" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-
+- xctool test -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC OSX Tests"
+  -sdk macosx ONLY_ACTIVE_ARCH=NO
+- xctool test -project SweetHMAC/SweetHMAC.xcodeproj -scheme "SweetHMAC iOS Tests"
+  -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 after_script:
-- "./scripts/remove-key.sh"
-
+- ./scripts/remove-key.sh
 env:
   global:
   - APP_NAME="SweetHMAC"
   - 'DEVELOPER_NAME="iPhone Distribution: Janio Cassio Leite (D9P69ND6CZ)"'
   - PROFILE_NAME="provisioning"
-  - secure: ODjL8XbxRzNZF04Ho5UbDsRDBW27nxtgvhkBm+9TBqu0melkw+AWBmr06SW2yarSt1EnDjKEi8VjCE44QgckD0lM+ylaXuEisJJ/6aefSbxJa/ckInPVqxDLJssaqkTidrXptFihMljaABMdlOcPAOZrtEJ2croN9WPG3c/baIw=
-  - secure: hoBPpIJ9w+/Ly/feND0di5NrGl0JPvgsYq7ldBuGX/DaD50fxqvBwuCLtWud9u1lZnA85n1nEl6DA2baMUEDSS6iiNEZIUcmadu1JDqnWyWG23Ei6ZFeie/tPas21EqYj2qlNk55ZvLf2/9BobRa7xmtLTDbe/wNNNbiRkV5GN0=
+  - secure: lFl6wZdM+BVZY0Z3PefQm70OFQPPhebmdKz399Ed1c3kRYOXCSP3R6nOTOAP7rGQW0KQ6xx3qPsIlBwY03t3j5alUROKFbebJzAOsjny7gHU1WrwkidK3CNlW8MF1B9zL3Mz0Jje4gstSArzaFCAQnJE7KNmJLlWOum1SkUc+4k=
+  - secure: Bm+G7RkjVvXOGqkvcWiatXND7uzAHKzEpH0y64YACewxmhRu4zgkRPSrJY0PYtj1KgfVURYZlXSdymWENKnKB0aaUg+AhFUFV972nVFs9MA8iAA4rUOMOZKtWu6Fp+GtoWPUlLgryb5zTSJsIE3OYbKUa7inlGnMwgo2Yr2ZPLA=
