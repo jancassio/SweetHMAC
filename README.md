@@ -59,7 +59,7 @@ You can use SweetHMAC with CocoaPods, specify your `Podfile` like this:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 pod 'SweetHMAC', '~> 3.0'
