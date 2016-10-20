@@ -60,31 +60,31 @@ public extension String {
    - returns: A encryped string based on HMAC algorithm and secret string.
    */
   func HMAC(algorithm:HMACAlgorithm, secret:String) -> String {
-    return SweetHMAC(message: self, secret: secret).HMAC(algorithm)
+    return SweetHMAC(message: self, secret: secret).HMAC(algorithm: algorithm)
   }
   
   func MD5 () -> String {
-    return SweetHMAC.MD5(self)
+    return SweetHMAC.MD5(input: self)
   }
   
   func SHA1 () -> String {
-    return SweetHMAC.SHA1(self)
+    return SweetHMAC.SHA1(input: self)
   }
   
   func SHA224 () -> String {
-    return SweetHMAC.SHA224(self)
+    return SweetHMAC.SHA224(input: self)
   }
   
   func SHA256 () -> String {
-    return SweetHMAC.SHA256(self)
+    return SweetHMAC.SHA256(input: self)
   }
   
   func SHA384 () -> String {
-    return SweetHMAC.SHA384(self)
+    return SweetHMAC.SHA384(input: self)
   }
   
   func SHA512 () -> String {
-    return SweetHMAC.SHA512(self)
+    return SweetHMAC.SHA512(input: self)
   }
 }
 
@@ -103,7 +103,7 @@ public extension String {
  - SHA512
  */
 public enum HMACAlgorithm {
-  case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
+  case md5, sha1, sha224, sha256, sha384, sha512
   
   /**
    Give the native value for HMACAlgorithm value
@@ -112,44 +112,44 @@ public enum HMACAlgorithm {
    */
   func toNative () -> CCHmacAlgorithm {
     switch self {
-    case .MD5:
+    case .md5:
       return CCHmacAlgorithm( kCCHmacAlgMD5 )
       
-    case .SHA1:
+    case .sha1:
       return CCHmacAlgorithm( kCCHmacAlgSHA1 )
       
-    case .SHA224:
+    case .sha224:
       return CCHmacAlgorithm( kCCHmacAlgSHA224 )
       
-    case .SHA256:
+    case .sha256:
       return CCHmacAlgorithm( kCCHmacAlgSHA256 )
       
-    case .SHA384:
+    case .sha384:
       return CCHmacAlgorithm( kCCHmacAlgSHA384 )
       
-    case .SHA512:
+    case .sha512:
       return CCHmacAlgorithm( kCCHmacAlgSHA512 )
     }
   }
   
   func digestLength () -> Int {
     switch self {
-    case .MD5:
+    case .md5:
       return Int( CC_MD5_DIGEST_LENGTH )
       
-    case .SHA1:
+    case .sha1:
       return Int( CC_SHA1_DIGEST_LENGTH )
       
-    case .SHA224:
+    case .sha224:
       return Int( CC_SHA224_DIGEST_LENGTH )
       
-    case .SHA256:
+    case .sha256:
       return Int( CC_SHA256_DIGEST_LENGTH )
       
-    case .SHA384:
+    case .sha384:
       return Int( CC_SHA384_DIGEST_LENGTH )
       
-    case .SHA512:
+    case .sha512:
       return Int( CC_SHA512_DIGEST_LENGTH )
     }
   }
@@ -163,9 +163,9 @@ public class SweetHMAC {
     var data:[CChar]
     var length:Int
     
-    init(string:String) {
-      data = string.cStringUsingEncoding(NSUTF8StringEncoding)!
-      length = string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+    public init(string:String) {
+      data = string.cString(using: String.Encoding.utf8)!
+      length = string.lengthOfBytes(using: String.Encoding.utf8)
     }
   }
   
@@ -173,10 +173,10 @@ public class SweetHMAC {
   
   
   /// Message to be encrypted
-  private var message:String = ""
+  fileprivate var message:String = ""
   
   /// Secret message to authenticate the encrypted message.
-  private var secret:String = ""
+  fileprivate var secret:String = ""
   
   /**
    Create a new SweetHMAC instance with given message and secret strings.
@@ -198,7 +198,7 @@ public class SweetHMAC {
     let key   = UTF8EncodedString(string: secret)
     
     let digestLength = algorithm.digestLength()
-    let result = UnsafeMutablePointer<CUnsignedChar>.alloc( digestLength )
+    let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLength)
     
     CCHmac(algorithm.toNative(), key.data, key.length, seed.data, seed.length, result)
     
@@ -208,7 +208,7 @@ public class SweetHMAC {
       hash.appendFormat("%02x", result[i])
     }
     
-    result.destroy()
+    result.deinitialize()
     
     return String( hash )
   }
@@ -219,7 +219,7 @@ public class SweetHMAC {
    - returns: A encrypted string.
    */
   public class func MD5 (input: String) -> String {
-    return digest(.MD5, input: input)
+    return digest(algorithm: .md5, input: input)
   }
   
   /**
@@ -228,7 +228,7 @@ public class SweetHMAC {
    - returns: A encrypted string.
    */
   public class func SHA1 (input: String) -> String {
-    return digest(.SHA1, input: input)
+    return digest(algorithm: .sha1, input: input)
   }
   
   /**
@@ -237,7 +237,7 @@ public class SweetHMAC {
    - returns: A encrypted string.
    */
   public class func SHA224 (input: String) -> String {
-    return digest(.SHA224, input: input)
+    return digest(algorithm: .sha224, input: input)
   }
   
   /**
@@ -246,7 +246,7 @@ public class SweetHMAC {
    - returns: A encrypted string.
    */
   public class func SHA256 (input: String) -> String {
-    return digest(.SHA256, input: input)
+    return digest(algorithm: .sha256, input: input)
   }
   
   /**
@@ -255,7 +255,7 @@ public class SweetHMAC {
    - returns: A encrypted string.
    */
   public class func SHA384 (input: String) -> String {
-    return digest(.SHA384, input: input)
+    return digest(algorithm: .sha384, input: input)
   }
   
   /**
@@ -264,7 +264,7 @@ public class SweetHMAC {
    - returns: A encrypted string.
    */
   public class func SHA512 (input: String) -> String {
-    return digest(.SHA512, input: input)
+    return digest(algorithm: .sha512, input: input)
   }
   
   
@@ -274,34 +274,34 @@ public class SweetHMAC {
    - parameter input: The string to be encrypted.
    - returns: A encrypted string.
    */
-  private class func digest (algorithm: HMACAlgorithm, input: String) -> String {
+  public class func digest (algorithm: HMACAlgorithm, input: String) -> String {
     let seed  = UTF8EncodedString(string: input)
     let digestLength = algorithm.digestLength()
     
-    let result = UnsafeMutablePointer<UInt8>.alloc( digestLength )
+    let result = UnsafeMutablePointer<UInt8>.allocate(capacity: digestLength)
     
     switch algorithm {
-    case .MD5:
+    case .md5:
       CC_MD5(seed.data, CC_LONG(seed.length), result)
       break
       
-    case .SHA1:
+    case .sha1:
       CC_SHA1(seed.data, CC_LONG(seed.length), result)
       break
       
-    case .SHA224:
+    case .sha224:
       CC_SHA224(seed.data, CC_LONG(seed.length), result)
       break
       
-    case .SHA256:
+    case .sha256:
       CC_SHA256(seed.data, CC_LONG(seed.length), result)
       break
       
-    case .SHA384:
+    case .sha384:
       CC_SHA384(seed.data, CC_LONG(seed.length), result)
       break
       
-    case .SHA512:
+    case .sha512:
       CC_SHA512(seed.data, CC_LONG(seed.length), result)
       break
     }
@@ -312,7 +312,7 @@ public class SweetHMAC {
       hash.appendFormat("%02x", result[i])
     }
     
-    result.destroy()
+    result.deinitialize()
     
     return String( hash )
   }

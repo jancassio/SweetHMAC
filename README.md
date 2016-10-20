@@ -16,7 +16,7 @@ There are two ways to use Sweet HMAC in your projects
 ### 1. by String extension
 ```swift
 // Will output this string: e470f785afb708cd8c2a31860642fd11
-"I'm going to make him an offer he can't refuse".HMAC(.MD5, secret:"Vito Corleone")
+"I'm going to make him an offer he can't refuse".HMAC(.md5, secret:"Vito Corleone")
 ```
 
 ### 2. by SweetHMAC class
@@ -26,13 +26,13 @@ let quote = "I'm going to make him an offer he can't refuse"
 let author = "Vito Corleone"
 
 // Create a SweetHMAC instance with your message and secret strings
-let digest:SweetHMAC = SweetHMAC(source: quote, secret: author)
+let digest:SweetHMAC = SweetHMAC(message: quote, secret: author)
 
 // Pick some computed HMAC output based on some algorithm using "HMAC" method...
-let md5 = digest.HMAC(.MD5)
+let md5 = digest.HMAC(algorithm: .md5)
 
 // ...or do it more "Sweet" like this
-let md5 = SweetHMAC(source: quote, secret: author).HMAC(.MD5)
+let md5 = SweetHMAC(message: quote, secret: author).HMAC(.MD5)
 ```
 
 ## Supported HMAC algorithms
@@ -62,14 +62,14 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'SweetHMAC', '~> 1.1'
+pod 'SweetHMAC', '~> 3.0'
 ```
 
 ##Carthage
 
 Also you can use Carthage to SweetHMAC framework at your project, just add SweetHMac in your `Cartfile` file like this:
 
-`github "jancassio/SweetHMAC" >= 1.1`
+`github "jancassio/SweetHMAC" >= 3.0`
 
 ##Integrated Project
 

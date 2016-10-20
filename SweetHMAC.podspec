@@ -2,7 +2,7 @@ projectName = "SweetHMAC"
 
 Pod::Spec.new do |spec|
   spec.name               = "#{projectName}"
-  spec.version            = "2.3"
+  spec.version            = "3.0"
   spec.license            = "MIT"
   spec.summary            = "A tiny and easy to use Swift class to encrypt strings using HMAC algorithms."
   spec.homepage           = "https://github.com/jancassio/#{projectName}"
@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.source             = { :git => "https://github.com/jancassio/SweetHMAC.git", :tag => spec.version }
   spec.requires_arc       = true
 
-  spec.ios.deployment_target = "8.1"
+  spec.ios.deployment_target = "9.0"
   spec.osx.deployment_target = "10.11"
 
   spec.source_files     = "#{projectName}/Source"
